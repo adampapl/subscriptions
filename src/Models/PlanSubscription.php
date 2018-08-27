@@ -501,7 +501,7 @@ class PlanSubscription extends Model
         $featureValue = $this->getFeatureValue($featureSlug);
         $usage = $this->usage()->byFeatureSlug($featureSlug)->first();
 
-        if ($featureValue === 'true') {
+        if ($featureValue == -1) { // -1 is unlimited
             return true;
         }
 
