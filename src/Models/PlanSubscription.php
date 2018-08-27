@@ -525,7 +525,9 @@ class PlanSubscription extends Model
     public function getFeatureUsage(string $featureSlug): int
     {
         $usage = $this->usage()->byFeatureSlug($featureSlug)->first();
-
+        if (! $usage) {
+            return 0;
+        }
         return ! $usage->expired() ? $usage->used : 0;
     }
 
