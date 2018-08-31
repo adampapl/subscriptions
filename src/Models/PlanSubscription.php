@@ -184,9 +184,9 @@ class PlanSubscription extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-                          ->doNotGenerateSlugsOnUpdate()
-                          ->generateSlugsFrom('name')
-                          ->saveSlugsTo('slug');
+            ->doNotGenerateSlugsOnUpdate()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 
     /**
@@ -553,7 +553,6 @@ class PlanSubscription extends Model
     public function getFeatureValue(string $featureSlug)
     {
         $feature = $this->plan->features()->where('slug', $featureSlug)->first();
-
         return $feature->value ?? null;
     }
 }
